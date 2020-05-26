@@ -14,3 +14,5 @@ Artemis aims to be a small discord bot focusing on security and operation of a s
 
 ## Contribution
 At this time pull requests are not open, this bot is built for a specific server and is open-source purely as a resource for any interested developers.  Please feel free to use, distribute and modify this bot as you please - let me know if you produce anything awesome!
+
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
