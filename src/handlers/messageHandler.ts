@@ -2,6 +2,8 @@ import checkPermission from "../utils/checkPermission";
 
 import { errorEmbed, simpleEmbed, successEmbed } from "../objects/embeds";
 import userInfo from "../objects/userInfo";
+import avatarEmbed from "../objects/avatar";
+import {shortenUrl} from "../utils/shortenUrl";
 
 export default function messageHandler(msg) {
   if (!msg.content.startsWith("!")) {
@@ -23,6 +25,21 @@ export default function messageHandler(msg) {
         const members = msg.mentions.members;
         members.forEach((m) => {
           msg.channel.send(userInfo(m));
+        });
+      });
+
+    case "avatar":
+      return checkPermission(msg, "verified", () => {
+        if (msg.mentions.everyone || msg.mentions.members.size < 1) {
+          return msg.channel.send(
+              errorEmbed("Please tag a valid member to lookup")
+          );
+        }
+        const members = msg.mentions.members;
+        members.forEach((m) => {
+          shortenUrl(m.user.displayAvatarURL({format: "png", dynamic: true, size: 512})).then(link => {
+            msg.channel.send(avatarEmbed(m.displayName, link));
+          })
         });
       });
 
@@ -75,7 +92,7 @@ export default function messageHandler(msg) {
               .bulkDelete(args)
               .then((m) => {
                 return message.channel
-                  .send(successEmbed(`Successfully deleted ${m.size} messages`))
+                  .send(successEmbed(`Successfully deleted ${m.size} message${m.size > 1 ? 's.' : '.'}`))
                   .then((embed) => {
                     embed.delete({ timeout: 10000 }).catch();
                   });
@@ -96,6 +113,7 @@ export default function messageHandler(msg) {
             );
           });
       });
+
     default:
       return;
   }
