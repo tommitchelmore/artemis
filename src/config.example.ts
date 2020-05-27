@@ -47,8 +47,7 @@ const Messages =  {
         title: "Commands",
         content:
             "**!userinfo <user>:** get some basic information about someone\n" +
-            "**!command2:** second command, etc\n" +
-            "**!command3:** third command, etc\n"
+            "**!avatar <user>:** get someone's avatar url, etc\n"
     }
 }
 
