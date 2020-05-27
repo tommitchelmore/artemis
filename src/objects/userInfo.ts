@@ -27,6 +27,8 @@ export default function userInfo(member: GuildMember | PartialGuildMember) {
   } catch (e) {
     if (e instanceof RangeError) {
       return errorEmbed(`There was an error checking the information of \`${member.displayName}\``);
+    } else {
+        console.log(e)
     }
   }
 }

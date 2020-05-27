@@ -9,7 +9,10 @@ const Roles = {
 }
 const Channels = {
     system: "SYSTEM CHANNEL - PRIVATE",
-    botSpam: "BOT COMMANDS CHANNEL"
+    botSpam: "BOT COMMANDS CHANNEL",
+    general: "GENERAL TEXT CHANNEL",
+    rules: "RULES CHANNEL",
+    commands: "COMMANDS CHANNEL"
 }
 const Embeds = {
     color: "#1F0D57",

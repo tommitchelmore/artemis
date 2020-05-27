@@ -11,7 +11,7 @@ export default function guildMemberAddHandler (
     channel.send(joinPrivateEmbed()).catch()
   })
   // @ts-ignore
-  client.guilds.resolve(Guild).channels.cache.get(Channels.system).send({embed: userInfo(member), content: member.id}).then(msg => {
+  client.guilds.resolve(Guild).channels.cache.get(Channels.system).send({content: member.id}).then(msg => {
     msg.react('✅').then(() => {
       msg.react('❎').catch();
     }).catch();

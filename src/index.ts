@@ -4,8 +4,8 @@ import * as Sentry from "@sentry/node";
 
 import messageHandler from "./handlers/messageHandler";
 import guildMemberAddHandler from "./handlers/guildMemberAddHandler";
-import {Messages, Guild, Embeds, Settings} from "./config";
-import {shortenUrl} from "./utils/shortenUrl";
+import {Messages, Guild, Embeds, Settings, Channels} from "./config";
+import reactHandler from "./handlers/reactHandler";
 
 if (Settings.useDotEnv) {
     console.log("Loading environment from .env")
@@ -24,6 +24,8 @@ if (process.env.SENTRY) {
 const client = new Client();
 
 client.on("ready", () => {
+    // @ts-ignore
+    client.channels.cache.get(Channels.system).messages.fetch().catch(console.error)
     for (let i in Messages) {
        // @ts-ignore
         client.guilds.resolve(Guild).channels.cache.get(Messages[i].channel).messages.fetch(Messages[i].id).then(msg => {
@@ -40,6 +42,7 @@ client.on("ready", () => {
 
 client.on("message", (msg) => messageHandler(msg));
 client.on("guildMemberAdd", (member) => guildMemberAddHandler(member));
+client.on("messageReactionAdd", (reaction, user) => reactHandler(reaction, user))
 
 client
   .login(process.env.TOKEN)

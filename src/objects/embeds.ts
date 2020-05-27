@@ -1,5 +1,5 @@
 import { MessageEmbed } from "discord.js";
-import { Embeds } from "../config";
+import {Channels, Embeds} from "../config";
 
 function simpleEmbed(msg: string) {
   return new MessageEmbed()
@@ -15,6 +15,15 @@ function successEmbed(msg: string) {
     .setColor(Embeds.success)
     .setTitle(msg)
     .setFooter(Embeds.footer, Embeds.thumb);
+}
+
+function welcomeEmbed(name: string) {
+  return new MessageEmbed()
+      .setColor(Embeds.color)
+      .setTitle(`Welcome to the Quiet Room, ${name}!`)
+      .setDescription(`Make sure you briefly read through <#${Channels.rules}> and <#${Channels.commands}>!`)
+      .setThumbnail(Embeds.thumb)
+      .setFooter(Embeds.footer, Embeds.thumb);
 }
 
 function errorEmbed(msg: string) {
@@ -41,4 +50,4 @@ function joinPrivateEmbed() {
       .setFooter(Embeds.footer, Embeds.thumb);
 }
 
-export { simpleEmbed, successEmbed, errorEmbed, permissionEmbed, joinPrivateEmbed };
+export { simpleEmbed, successEmbed, welcomeEmbed, errorEmbed, permissionEmbed, joinPrivateEmbed };
