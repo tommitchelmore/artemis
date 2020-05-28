@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently --kill-others --names \"BUILD,RUN\" \"tsc -w\" \"nodemon -q -w dist dist/index.js\"",
     "build": "tsc",
-    "lint": "tslint src/**/*.ts",
+    "lint": "eslint src/**/*.ts",
     "format": "prettier --write src/**/*.ts"
   },
   "author": "Tom Mitchelmore",
@@ -20,7 +20,6 @@
     "eslint": "^7.0.0",
     "prettier": "^2.0.5",
     "ts-loader": "^7.0.4",
-    "tslint": "^6.1.2",
     "typescript": "^3.9.3"
   },
   "repository": "https://github.com/tommitchelmore/artemis"
