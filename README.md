@@ -15,7 +15,6 @@ Artemis aims to be a small discord bot focusing on security and operation of a s
 ## Todo
 - Configurable bot rich presence.
 - Kick and ban management with logging to a channel.
-- Dockerfile.
 
 ## Contribution and licensing
 At this time pull requests are not open, this bot is built for a specific server and is open-source purely as a resource for any interested developers.  Please feel free to use, distribute and modify this bot as you please - let me know if you produce anything awesome!
